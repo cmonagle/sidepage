@@ -1,21 +1,14 @@
 {
   "name": "sidepage",
   "description": "Display a configurable home page in the Firefox sidebar",
-  "version": "0.6.0",
+  "version": "1.0.0",
   "author": "Cameron Monagle <cm@cameronmonagle.com>",
   "bugs": {
     "url": "https://github.com/cmonagle/sidepage/issues"
   },
   "devDependencies": {
-    "addons-linter": "^7.3.0",
-    "eslint": "^5.5.0",
-    "eslint-plugin-mozilla": "^0.15.4",
-    "eslint-plugin-no-unsanitized": "^3.0.2",
-    "mustache": "^2.3.2",
-    "npm-run-all": "4.1.5",
-    "stylelint": "^9.5.0",
-    "stylelint-config-standard": "^18.2.0",
-    "web-ext": "^2.9.1"
+    "addons-linter": "^9.3.0",
+    "web-ext": "^9.2.0"
   },
   "homepage": "https://github.com/cmonagle/sidepage/",
   "license": "MPL-2.0",
@@ -25,17 +18,9 @@
     "url": "git+https://github.com/cmonagle/sidepage.git"
   },
   "scripts": {
-    "start": "npm-run-all build run",
-    "lint": "npm-run-all lint:*",
-    "lint:addon": "npm run package && addons-linter ./addon.xpi -o text --self-hosted",
-    "lint:js": "eslint .",
-    "lint:styles": "stylelint ./addon/*.css",
-    "build": "npm-run-all build:*",
-    "build:manifest": "node -e 'let input = JSON.parse(fs.readFileSync(\"package.json\")); input.version = input.version.slice(0, -1) + Math.floor((Date.now() - new Date(new Date().getFullYear().toString()).getTime()) / 3600000); Object.assign(input, process.env); console.log(JSON.stringify(input))' | mustache - addon/manifest.json.tmpl > addon/manifest.json",
-    "build:buildSettings": "mkdir -p addon/build/ && node -e 'console.log(JSON.stringify(process.env))' | mustache - addon/buildSettings.js.tmpl > addon/build/buildSettings.js",
-    "build:web-ext": "web-ext build --source-dir=addon --overwrite-dest --ignore-files '*.tmpl'",
+    "build": "web-ext build --source-dir=addon --overwrite-dest",
     "package": "npm run build && cp web-ext-artifacts/`ls -t1 web-ext-artifacts | head -n 1` addon.xpi",
-    "run": "mkdir -p ./Profile && web-ext run --source-dir=addon -p ./Profile --browser-console --keep-profile-changes -f nightly",
-    "test": "npm run lint"
+    "lint": "addons-linter ./addon --self-hosted",
+    "start": "web-ext run --source-dir=addon -p ./Profile --browser-console --keep-profile-changes"
   }
 }
