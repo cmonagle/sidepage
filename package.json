@@ -20,7 +20,6 @@
   "scripts": {
     "build": "web-ext build --source-dir=addon --overwrite-dest",
     "package": "npm run build && cp web-ext-artifacts/`ls -t1 web-ext-artifacts | head -n 1` addon.xpi",
-    "lint": "addons-linter ./addon --self-hosted",
-    "start": "web-ext run --source-dir=addon -p ./Profile --browser-console --keep-profile-changes"
+    "lint": "addons-linter ./addon --self-hosted"
   }
 }
