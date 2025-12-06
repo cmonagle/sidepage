@@ -1,10 +1,10 @@
 {
-  "name": "side-view",
-  "description": "Open a mobile view of a page in the sidebar",
+  "name": "sidepage",
+  "description": "Display a configurable home page in the Firefox sidebar",
   "version": "0.6.0",
-  "author": "Mozilla (https://mozilla.org/)",
+  "author": "Cameron Monagle <cm@cameronmonagle.com>",
   "bugs": {
-    "url": "https://github.com/mozilla/side-view/issues"
+    "url": "https://github.com/cmonagle/sidepage/issues"
   },
   "devDependencies": {
     "addons-linter": "^7.3.0",
@@ -17,12 +17,12 @@
     "stylelint-config-standard": "^18.2.0",
     "web-ext": "^2.9.1"
   },
-  "homepage": "https://github.com/mozilla/side-view/",
+  "homepage": "https://github.com/cmonagle/sidepage/",
   "license": "MPL-2.0",
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mozilla/side-view.git"
+    "url": "git+https://github.com/cmonagle/sidepage.git"
   },
   "scripts": {
     "start": "npm-run-all build run",

@@ -1,23 +1,26 @@
-# Side View
+# Sidepage
 
-An experiment with opening mobile views of pages in the sidebar.
+A simple Firefox extension to display a configurable home page in the sidebar.
 
-[**Install from addons.mozilla.org**](https://addons.mozilla.org/en-US/firefox/addon/side-view/)
+## Disclaimer
+
+This extension was created with the assistance of generative AI. Use at your own risk. No guarantees or warranties are provided.
 
 ## Installing
 
-Use `npm install`, then `npm start`.
+Use `npm install`, then `npm run build` to create the extension package.
 
 ## Installing manually
 
-Check out the repository. Go to `about:debugging` in Firefox, and select **Load Temporary Add-on**. Select a file in the `addon/` directory.
-
-Or: install [`web-ext`](https://github.com/mozilla/web-ext) (like `npm i -g web-ext`) and run `web-ext run -s addon/ --browser-console -f nightly`
+Go to `about:debugging` in Firefox, click **This Firefox**, then **Load Temporary Add-on**.
+Select the `addon.xpi` file or the built `.zip` file from `web-ext-artifacts/`.
 
 ## Using
 
-This adds a context menu item: **Open in sidebar** or **Open link in sidebar**. Select that, and the sidebar will be opened with a mobile view of the page.
+1. Click the toolbar button to open/toggle the sidebar
+2. Go to the extension's settings (about:addons → Sidepage → Options) to configure your home page URL
+3. The sidebar will display your configured home page
 
 ## Credits
 
-[Anthony_f](https://addons.mozilla.org/en-US/firefox/user/Anthony_f/)'s [Sidebar for Google Search](https://addons.mozilla.org/en-US/firefox/addon/sidebar-for-google-search/) inspired this add-on's approach.
+Based on Mozilla's [Side View](https://github.com/mozilla/side-view/) extension, simplified to focus on displaying a single configurable page.

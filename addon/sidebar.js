@@ -1,35 +1,13 @@
-/* globals buildSettings */
+// Default home URL
+const DEFAULT_HOME_URL = "https://example.com";
 
-function element(selector) {
-  return document.querySelector(selector);
+async function loadSidebar() {
+  const result = await browser.storage.local.get("homeUrl");
+  const homeUrl = result.homeUrl || DEFAULT_HOME_URL;
+
+  // Navigate directly to the URL
+  window.location.href = homeUrl;
 }
 
-function applyDarkTheme() {
-  document.querySelector(".page").classList.add("dark-theme");
-}
-
-async function checkForDark() {
-  browser.management.getAll().then((extensions) => {
-    for (let extension of extensions) {
-    // The user has the default dark theme enabled
-    if (extension.id ===
-      "firefox-compact-dark@mozilla.org@personas.mozilla.org"
-      && extension.enabled) {
-        applyDarkTheme();
-      }
-    }
-  });
-}
-
-async function init() {
-  element("#watch-tutorial").onclick = () => {
-    window.open("https://youtu.be/no6D_B4wgo8");
-  };
-
-  checkForDark();
-  browser.management.onEnabled.addListener((info) => {
-    checkForDark();
-  });
-}
-
-init();
+// Load the configured URL immediately
+loadSidebar();
